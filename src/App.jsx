@@ -26,7 +26,7 @@ function App() {
   }, [location]);
 
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100 overflow-hidden">
       <ScrollToTop/>
       <Navbar />
       <div> {/* Push content down to avoid navbar overlap */}

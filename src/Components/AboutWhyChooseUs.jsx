@@ -15,6 +15,7 @@ const AboutWhyChooseUs = () => {
 
   useEffect(() => {
     const observerOptions = { threshold: 0.2 };
+
     const leftObserver = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         setLeftVisible(true);
@@ -48,7 +49,6 @@ const AboutWhyChooseUs = () => {
           leftVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
         }`}
       >
-        {/* Icon + Subtitle */}
         <div className="flex items-center gap-2 mb-4 text-red-600 font-semibold uppercase tracking-widest">
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
@@ -63,17 +63,14 @@ const AboutWhyChooseUs = () => {
           <span>Our Benefits</span>
         </div>
 
-        {/* Heading */}
         <h2 className="text-4xl sm:text-5xl font-extrabold mb-6 leading-tight text-gray-900">
           Why You Should <br /> <span className="text-red-600">Choose Us</span>
         </h2>
 
-        {/* Description */}
         <p className="text-gray-600 max-w-md mb-8 text-lg leading-relaxed">
           With over four decades of experience delivering innovative solutions to enterprises worldwide, we offer end-to-end services tailored to your business.
         </p>
 
-        {/* List of Benefits */}
         <ul className="space-y-5 max-w-md">
           {benefits.map((item, index) => (
             <li key={index} className="flex items-start gap-3 text-gray-900 font-medium text-lg">
@@ -93,40 +90,45 @@ const AboutWhyChooseUs = () => {
         </ul>
       </div>
 
-      {/* Right Content (Image + Overlay) */}
+      {/* Right Content */}
       <div
         ref={rightRef}
-        className={`relative flex justify-center items-center transition-transform duration-700 ease-out ${
+        className={`relative transition-transform duration-700 ease-out ${
           rightVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
-        }`}
+        } flex flex-col items-center lg:items-start`}
       >
-        {/* Image */}
-        <img
-          src="https://php.kodesolution.com/2025/electricien-php/images/background/10.jpg"
-          alt="Electrician working"
-          className="rounded-xl shadow-xl max-w-full object-cover"
-        />
+        <div className="relative w-full max-w-md">
+          {/* Image */}
+          <img
+            src="https://php.kodesolution.com/2025/electricien-php/images/background/10.jpg"
+            alt="Electrician working"
+            className="rounded-xl shadow-xl w-full object-cover"
+          />
 
-        {/* Play Button */}
-        <button
-          aria-label="Play Video"
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-5 rounded-full shadow-lg hover:bg-red-600 transition-colors duration-300 group flex items-center justify-center"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-8 h-8 text-red-600 group-hover:text-white transition-colors duration-300"
-            fill="currentColor"
-            viewBox="0 0 24 24"
+          {/* Play Button */}
+          <button
+            aria-label="Play Video"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-5 rounded-full shadow-lg hover:bg-red-600 transition-colors duration-300 group flex items-center justify-center"
           >
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-8 h-8 text-red-600 group-hover:text-white transition-colors duration-300"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </button>
+        </div>
 
-        {/* Red Box Overlay */}
+        {/* Red Info Box */}
         <div
-          className={`absolute bottom-8 -left-12 bg-red-600 text-white p-6 w-48 rounded-xl shadow-xl border-4 border-white transition-transform duration-700 ease-out ${
-            rightVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-          }`}
+          className={`
+            bg-red-600 text-white p-6 mt-6 lg:mt-0 lg:absolute lg:bottom-8 lg:-left-12 
+            w-full max-w-xs rounded-xl shadow-xl border-4 border-white 
+            transition-all duration-700 ease-out
+            ${rightVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}
+          `}
         >
           <div className="mb-3">
             <svg 

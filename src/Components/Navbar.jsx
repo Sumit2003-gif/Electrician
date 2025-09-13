@@ -150,7 +150,7 @@ const Navbar = () => {
             {renderMenuLinks(false)}
             <div className="flex gap-5 mt-2">{renderSocialIcons(false)}</div>
             <a href="tel:012345678">
-              <button className="w-full mt-4 bg-red-600 hover:bg-red-700 text-white font-bold py-2 rounded-lg transition duration-300 ease-in-out">
+              <button className="w-full mt-4 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-2 rounded-lg transition duration-300 ease-in-out">
                 BOOKING NOW
               </button>
             </a>
@@ -160,13 +160,13 @@ const Navbar = () => {
 
       {/* Sticky White Navbar (Appears after scroll) */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 bg-white shadow-md py-4 w-full transition-all duration-500 ease-in-out transform ${
+        className={`fixed top-0 left-0 right-0 z-50 bg-white shadow-md w-full transition-all duration-500 ease-in-out transform ${
           scrolled
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-10 pointer-events-none"
         }`}
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
           {/* Logo */}
           <img
             src="https://php.kodesolution.com/2025/electricien-php/images/logo-2.png"
@@ -179,7 +179,7 @@ const Navbar = () => {
             {renderMenuLinks(true)}
           </div>
 
-          {/* Booking & Social Icons */}
+          {/* Booking & Social Icons (Desktop) */}
           <div className="hidden md:flex items-center gap-6">
             <a href="tel:012345678">
               <button className="bg-red-600 cursor-pointer hover:bg-red-700 active:bg-red-800 text-white font-bold px-5 py-2 rounded-lg shadow transition duration-300 ease-in-out transform hover:scale-105 text-sm">
@@ -188,7 +188,35 @@ const Navbar = () => {
             </a>
             <div className="flex gap-5">{renderSocialIcons(true)}</div>
           </div>
+
+          {/* Mobile Toggle */}
+          <div className="md:hidden">
+            <button
+              onClick={toggleMenu}
+              className="text-gray-700 text-2xl focus:outline-none"
+              aria-label="Toggle mobile menu"
+            >
+              {menuOpen ? <FaTimes /> : <FaBars />}
+            </button>
+          </div>
         </div>
+
+        {/* Mobile Menu (Sticky navbar) */}
+        <div
+          className={`md:hidden px-6 transition-all duration-500 ease-in-out overflow-hidden ${
+            menuOpen && scrolled ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="flex flex-col items-start gap-4 py-4 text-gray-700">
+            {renderMenuLinks(true)}
+            <div className="flex gap-5 mt-2">{renderSocialIcons(true)}</div>
+            <a href="tel:012345678">
+              <button className="w-full mt-4 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-2 rounded-sm transition duration-300 ease-in-out">
+                BOOKING NOW
+              </button>
+            </a>
+          </div>
+        </div> 
       </nav>
     </>
   );

@@ -88,23 +88,35 @@ const HomeElectricalServicesSlider = () => {
               data-aos="fade-up"
               data-aos-delay={idx * 100}
             >
+              {/* Image */}
               <img
                 src={item.src}
                 alt={item.title}
                 className="w-full h-60 sm:h-72 md:h-80 object-cover transition-transform duration-500 group-hover:scale-105"
               />
 
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-black/60 transition-opacity duration-300 opacity-0 group-hover:opacity-100 flex items-end p-4 sm:p-6">
-                {/* Triangle Arrow */}
+              {/* Overlay (Always visible on mobile, hover on desktop) */}
+              <div
+                className={`
+                  absolute inset-0 bg-black/60 flex items-end p-4 sm:p-6 transition-all duration-300
+                  md:opacity-0 md:group-hover:opacity-100
+                `}
+              >
+                {/* Arrow Button - Always visible on all screen sizes */}
                 <Link to="/about" className="absolute left-4 bottom-4 z-20">
-                  <div className="w-9 h-9 bg-red-600 flex items-center justify-center rounded-full shadow-md hover:bg-red-700 transition-colors">
+                  <div className="w-9 h-9 bg-red-600 flex items-center justify-center rounded-full shadow-md hover:bg-red-700 transition-colors active:scale-95">
                     <FaArrowRight className="text-white text-sm" />
                   </div>
                 </Link>
 
                 {/* Text Content */}
-                <div className="z-10 ml-4  bg-white/95 backdrop-blur px-4 py-3 rounded-md text-black shadow-lg transform translate-y-10 group-hover:-translate-y-6 transition-all duration-500 ease-out">
+                <div
+                  className={`
+                    z-10 ml-4 bg-white/95 backdrop-blur px-4 py-3 rounded-md text-black shadow-lg
+                    transition-all duration-500 ease-out
+                    translate-y-0 md:translate-y-10 md:group-hover:-translate-y-6
+                  `}
+                >
                   <h3 className="font-bold text-lg">{item.title}</h3>
                   <p className="text-sm text-gray-700 mt-1 border-t pt-1 border-gray-300">
                     {item.subtitle}
@@ -116,7 +128,7 @@ const HomeElectricalServicesSlider = () => {
         ))}
       </Swiper>
 
-      {/* Pagination (Line style) */}
+      {/* Pagination Dots */}
       <div className="mt-10 flex justify-center space-x-3">
         {images.map((_, index) => (
           <div
